@@ -42,7 +42,7 @@ pipeline:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
-                    caching: true
+                    caching: false
                     connectorRef: jfrogconnector
                     repo: trialclp5ro.jfrog.io/harness-demo-docker/harness-demo
                     tags:
