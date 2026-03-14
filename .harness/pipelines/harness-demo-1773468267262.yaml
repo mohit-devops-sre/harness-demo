@@ -1,6 +1,6 @@
 pipeline:
   identifier: Build_mohit_devops_sre_harness_demo_1773468301302
-  name: Build harness-demo
+  name: CI-CD Harness Demo
   orgIdentifier: default
   projectIdentifier: Harness_Demo
   properties:
@@ -158,3 +158,4 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+  tags: {}
