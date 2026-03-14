@@ -39,15 +39,37 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
+                  identifier: debugdocker
+                  name: Debug Docker Push
+                  spec:
+                    command: |-
+                      echo "=== Debug Docker Info ==="
+                      echo "Registry: trialclp5ro.jfrog.io"
+                      echo "Repo: harness-demo-docker/harness-demo"
+                      echo "Full push path: trialclp5ro.jfrog.io/harness-demo-docker/harness-demo:latest"
+                      echo ""
+                      echo "=== Testing Docker Login ==="
+                      docker login trialclp5ro.jfrog.io -u $JFROG_USER -p $JFROG_PASS || echo "LOGIN FAILED"
+                      echo ""
+                      echo "=== Manual Push Test ==="
+                      docker pull hello-world
+                      docker tag hello-world trialclp5ro.jfrog.io/harness-demo-docker/harness-demo:test
+                      docker push trialclp5ro.jfrog.io/harness-demo-docker/harness-demo:test || echo "PUSH FAILED"
+                    envVariables:
+                      JFROG_USER: your_jfrog_username
+                      JFROG_PASS: your_jfrog_token
+                  timeout: ""
+                  type: Run
+              - step:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
-                    connectorRef: jfrogconnector
+                    caching: true
+                    connectorRef: jfrog_artifactory
                     repo: harness-demo-docker/harness-demo
                     tags:
                       - <+pipeline.sequenceId>
                       - latest
-                    caching: false
                     dockerfile: ./Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
