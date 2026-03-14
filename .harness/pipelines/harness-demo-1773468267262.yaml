@@ -47,7 +47,7 @@ pipeline:
                     tags:
                       - <+pipeline.sequenceId>
                       - latest
-                    caching: true
+                    caching: false
                     dockerfile: ./Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
