@@ -7,11 +7,13 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 @app.route('/ping', methods=['GET'])
 def ping():
     """Health check endpoint"""
     logger.info("Health check request received")
     return {'status': 'healthy', 'message': 'pong'}, 200
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -56,6 +58,7 @@ def index():
     </html>
     '''
     return html, 200, {'Content-Type': 'text/html'}
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=False)
