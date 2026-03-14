@@ -15,7 +15,7 @@ pipeline:
         name: build
         spec:
           caching:
-            enabled: true
+            enabled: false
           cloneCodebase: true
           execution:
             steps:
