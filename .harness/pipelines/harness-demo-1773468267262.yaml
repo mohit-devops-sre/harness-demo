@@ -21,7 +21,7 @@ pipeline:
             steps:
               - step:
                   identifier: runlinter
-                  name: run linter
+                  name: run linter stage
                   spec:
                     command: |-
                       pip install flake8
