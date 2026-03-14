@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_mohit_devops_sre_harness_demo_1773468301302-push-trigger-input-set
+  identifier: Build_mohit_devops_sre_harness_demo_1773468301302pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Harness_Demo
+  pipeline:
+    identifier: Build_mohit_devops_sre_harness_demo_1773468301302
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
