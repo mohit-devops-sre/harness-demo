@@ -107,26 +107,26 @@ pipeline:
                               count: 1
                           skipDryRun: false
                     - step:
+                        type: HarnessApproval
+                        name: Approval
+                        identifier: Approval
+                        spec:
+                          approvalMessage: Please review the following information and approve the pipeline post testing
+                          includePipelineExecutionHistory: true
+                          isAutoRejectEnabled: false
+                          approvers:
+                            userGroups:
+                              - _project_all_users
+                            minimumCount: 1
+                            disallowPipelineExecutor: false
+                          approverInputs: []
+                        timeout: 1d
+                    - step:
                         name: Canary Delete
                         identifier: canaryDelete
                         type: K8sCanaryDelete
                         timeout: 10m
                         spec: {}
-              - step:
-                  type: HarnessApproval
-                  name: Harness Approval
-                  identifier: Harness_Approval
-                  spec:
-                    approvalMessage: Please review the following information and approve the pipeline progression
-                    includePipelineExecutionHistory: true
-                    isAutoRejectEnabled: false
-                    approvers:
-                      userGroups:
-                        - _project_all_users
-                      minimumCount: 1
-                      disallowPipelineExecutor: false
-                    approverInputs: []
-                  timeout: 1d
               - stepGroup:
                   name: Primary Deployment
                   identifier: primaryDeployment
