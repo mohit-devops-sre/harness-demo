@@ -30,7 +30,7 @@ pipeline:
                   type: Run
               - step:
                   identifier: setupvirtualenvironment
-                  name: setup virtual environment
+                  name: setup virtual environmentt
                   spec:
                     command: |-
                       python3 -m venv .venv
