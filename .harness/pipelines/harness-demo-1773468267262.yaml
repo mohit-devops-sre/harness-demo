@@ -68,7 +68,7 @@ pipeline:
         type: CI
         description: ""
     - stage:
-        name: Canary Deploy
+        name: Deploy
         identifier: Canary_Deploy
         description: ""
         type: Deployment
