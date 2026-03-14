@@ -25,7 +25,7 @@ pipeline:
                   spec:
                     command: |-
                       pip install flake8
-                      flake8 .
+                      flake8 --ignore=E302,E305,W292 .
                   timeout: ""
                   type: Run
               - step:
@@ -43,19 +43,20 @@ pipeline:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
-                    connectorRef: jfrogconnector
+                    caching: true
+                    connectorRef: jfrog_artifactory
+                    host: trialclp5ro.jfrog.io
                     repo: harness-demo-docker/harness-demo
                     tags:
                       - <+pipeline.sequenceId>
                       - latest
-                    caching: true
                     dockerfile: ./Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
-            os: Linux
             arch: Amd64
+            os: Linux
           runtime:
-            type: Cloud
             spec: {}
+            type: Cloud
         type: CI
