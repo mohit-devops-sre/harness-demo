@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_mohit_devops_sre_harness_demo_1773468301302-pr-trigger-input-set
+  identifier: Build_mohit_devops_sre_harness_demo_1773468301302prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Harness_Demo
+  pipeline:
+    identifier: Build_mohit_devops_sre_harness_demo_1773468301302
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
