@@ -64,7 +64,7 @@ pipeline:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
-                    connectorRef: jfrogconnector
+                    connectorRef: account.harnessImage
                     repo: harness-demo-docker/harness-demo
                     tags:
                       - <+pipeline.sequenceId>
