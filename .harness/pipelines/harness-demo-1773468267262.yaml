@@ -43,20 +43,19 @@ pipeline:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
-                    caching: true
-                    connectorRef: jfrog_artifactory
-                    host: trialclp5ro.jfrog.io
+                    connectorRef: jfrogconnector
                     repo: harness-demo-docker/harness-demo
                     tags:
                       - <+pipeline.sequenceId>
                       - latest
+                    caching: true
                     dockerfile: ./Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
