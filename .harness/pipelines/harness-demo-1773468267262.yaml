@@ -39,29 +39,12 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
-                  identifier: debugauth
-                  name: Debug Auth Check
-                  spec:
-                    connectorRef: jfrogconnector
-                    command: |-
-                      echo "=== Testing Docker Login with Connector Creds ==="
-                      echo "PLUGIN_REGISTRY: $PLUGIN_REGISTRY"
-                      echo "PLUGIN_USERNAME: $PLUGIN_USERNAME"
-                      echo "=== Attempting login ==="
-                      docker login $PLUGIN_REGISTRY -u $PLUGIN_USERNAME -p $PLUGIN_PASSWORD && echo "LOGIN SUCCESS" || echo "LOGIN FAILED"
-                      echo "=== Attempting push ==="
-                      docker pull hello-world
-                      docker tag hello-world $PLUGIN_REGISTRY/harness-demo-docker/harness-demo:authtest
-                      docker push $PLUGIN_REGISTRY/harness-demo-docker/harness-demo:authtest && echo "PUSH SUCCESS" || echo "PUSH FAILED"
-                  timeout: ""
-                  type: Run
-              - step:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
                     caching: true
                     connectorRef: jfrogconnector
-                    repo: harness-demo-docker/harness-demo
+                    repo: trialclp5ro.jfrog.io/harness-demo-docker/harness-demo
                     tags:
                       - <+pipeline.sequenceId>
                       - latest
