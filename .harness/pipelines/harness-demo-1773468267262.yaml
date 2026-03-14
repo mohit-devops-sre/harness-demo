@@ -64,12 +64,12 @@ pipeline:
                   identifier: buildandpushtoartifactory
                   name: Build and Push to Artifactory
                   spec:
-                    caching: true
-                    connectorRef: jfrog_artifactory
+                    connectorRef: jfrogconnector
                     repo: harness-demo-docker/harness-demo
                     tags:
                       - <+pipeline.sequenceId>
                       - latest
+                    caching: true
                     dockerfile: ./Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
