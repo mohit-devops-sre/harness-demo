@@ -40,14 +40,17 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
-                  identifier: dockerbuild
-                  name: docker_build
+                  identifier: buildandpushtoartifactory
+                  name: Build and Push to Artifactory
                   spec:
                     caching: true
-                    connectorRef: <+input>
-                    repo: hello/world
+                    connectorRef: jfrog_artifactory
+                    host: trialclp5ro.jfrog.io
+                    repo: harness-demo-docker/harness-demo
                     tags:
+                      - <+pipeline.sequenceId>
                       - latest
+                    dockerfile: ./Dockerfile
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
