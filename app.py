@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 @app.route('/ping', methods=['GET'])
 def ping():
     """Health check endpoint"""
-    logger.info("Health check request received")
+    logger.info("Health check request received by logger")
     return {'status': 'healthy', 'message': 'pong'}, 200
 
 
